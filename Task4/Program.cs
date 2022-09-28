@@ -23,7 +23,6 @@ int[,,] FillArray(int z, int x, int y)
 {
     Random r = new Random();
     int[,,] arr = new int[z, x, y];
-    //int temp;
 
     for (int i = 0; i < arr.GetLength(0); i++)
     {
@@ -31,7 +30,6 @@ int[,,] FillArray(int z, int x, int y)
         {
             for (int k = 0; k < arr.GetLength(2); k++)
             {
-                //  arr[i, j, k] = r.Next(1, 100);
                 bool flag = false;
                 while (flag != true)
                 {
