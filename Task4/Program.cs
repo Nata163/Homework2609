@@ -1,11 +1,29 @@
 ﻿// Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
 // Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 
+bool SearchElem(int[,,] arr, int value)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            for (int k = 0; k < arr.GetLength(2); k++)
+            {
+                if (arr[i, j, k] == value)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 int[,,] FillArray(int z, int x, int y)
 {
     Random r = new Random();
     int[,,] arr = new int[z, x, y];
-    int temp;
+    //int temp;
 
     for (int i = 0; i < arr.GetLength(0); i++)
     {
@@ -13,7 +31,23 @@ int[,,] FillArray(int z, int x, int y)
         {
             for (int k = 0; k < arr.GetLength(2); k++)
             {
-                arr[i, j, k] = r.Next(1, 100);
+                //  arr[i, j, k] = r.Next(1, 100);
+                bool flag = false;
+                while (flag != true)
+                {
+                    flag = false;
+                    int temp = r.Next(1, 100);
+                    if (SearchElem(arr, temp))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        arr[i, j, k] = temp;
+                        flag = true;
+                    }
+
+                }
             }
         }
     }
